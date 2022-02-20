@@ -24,6 +24,7 @@ import about03 from "../../public/assets/about03.png";
 import about04 from "../../public/assets/about04.png";
 
 import profile from "../../public/assets/profile.png";
+import profile2 from "../../public/assets/profile_bg2.png";
 import circle from "../../public/assets/circle.svg";
 import logo from "../../public/assets/logo.png";
 
@@ -60,6 +61,7 @@ export const images = {
   about03,
   about04,
   profile,
+  profile2,
   circle,
   logo,
   adidas,
