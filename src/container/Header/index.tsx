@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+import { AppWrap } from "../../wrapper";
 import { images } from "../../constants";
 
 import styles from "./styles.module.scss";
@@ -19,9 +20,9 @@ const scaleVariants = {
 
 const techStackImages = [images.typescript, images.react, images.sass];
 
-export const Header = () => {
+const x = () => {
   return (
-    <section id={styles.home} className={styles["app__header"] + " app__flex"}>
+    <section className={styles["app__header"] + " app__flex"}>
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.8 }}
@@ -75,3 +76,5 @@ export const Header = () => {
     </section>
   );
 };
+
+export const Header = AppWrap(x, styles, "home");
