@@ -1,4 +1,3 @@
-import { ReactComponentElement, ReactNode, useEffect } from "react";
 import { NavigationDots, SocialMedia } from "../../components";
 
 export const AppWrap = (
@@ -11,19 +10,19 @@ export const AppWrap = (
 ) =>
   function HOC() {
     return (
-      <section id={styles[idName]} className={`app__container ${classNames}`}>
+      <div id={idName} className={`app__container ${classNames}`}>
         <SocialMedia />
 
-        <section className="app__wrapper app__flex">
+        <div className="app__wrapper app__flex">
           <Component />
 
           <div className="copyright">
             <p className="p-text">@2022 Arthus Vinícius</p>
             <p className="p-text">All rights reserved</p>
           </div>
-        </section>
+        </div>
 
         <NavigationDots active={idName} />
-      </section>
+      </div>
     );
   };

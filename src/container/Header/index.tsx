@@ -5,7 +5,6 @@ import { AppWrap } from "../../wrapper";
 import { images } from "../../constants";
 
 import styles from "./styles.module.scss";
-import Image from "next/image";
 
 const scaleVariants = {
   whileInView: {
@@ -20,9 +19,9 @@ const scaleVariants = {
 
 const techStackImages = [images.typescript, images.react, images.sass];
 
-const x = () => {
+export const Component = () => {
   return (
-    <section className={styles["app__header"] + " app__flex"}>
+    <div className={styles["app__header"] + " app__flex"}>
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.8 }}
@@ -73,8 +72,8 @@ const x = () => {
           </div>
         ))}
       </motion.div>
-    </section>
+    </div>
   );
 };
 
-export const Header = AppWrap(x, styles, "home");
+export const Header = AppWrap(Component, styles, "home");

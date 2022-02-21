@@ -1,9 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-import { images } from "../../constants";
+import { AppWrap } from "../../wrapper";
 import styles from "./styles.module.scss";
-import Image from "next/image";
 
 import { urlFor, client } from "../../client";
 
@@ -13,7 +13,7 @@ interface IAbout {
   imgUrl: string;
 }
 
-export const About = () => {
+const Component = () => {
   const [abouts, setAbouts] = useState<IAbout[]>([]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const About = () => {
         <span>Good Business</span>
       </h2>
 
-      <section className={styles["app__profiles"]}>
+      <div id="about" className={styles["app__profiles"]}>
         {abouts.map((about, index) => (
           <motion.div
             key={about.title + index}
@@ -38,7 +38,7 @@ export const About = () => {
             transition={{ duration: 0.5, type: "tween" }}
             className={styles["app__profile-item"]}
           >
-            <img src={urlFor(about.imgUrl)} alt={about.title} />
+            <img src={urlFor(about.imgUrl).toString()} alt={about.title} />
             <h2 className="bold-text" style={{ marginTop: 20 }}>
               {about.title}
             </h2>
@@ -47,7 +47,9 @@ export const About = () => {
             </p>
           </motion.div>
         ))}
-      </section>
+      </div>
     </>
   );
 };
+
+export const About = AppWrap(Component, styles, "about");
