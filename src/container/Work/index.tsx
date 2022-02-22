@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
 
-import { AppWrap } from "../../wrapper";
+import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 
 import styles from "./styles.module.scss";
@@ -36,7 +36,20 @@ const Component = () => {
 
   useEffect(() => {}, [activeFilter]);
 
-  const handleWorkFilter = (item: string) => {};
+  const handleWorkFilter = (item: string) => {
+    setActiveFilter(item);
+    setAnimateCard({ y: 100, opacity: 0 });
+
+    setTimeout(() => {
+      setAnimateCard({ y: 0, opacity: 1 });
+
+      if (item === "All") {
+        setFilterWork(works);
+      } else {
+        setFilterWork(works.filter((work) => work.tags.includes(item)));
+      }
+    }, 500);
+  };
 
   return (
     <>
@@ -84,7 +97,7 @@ const Component = () => {
                 <a href={work.projectLink} target="_blank" rel="noreferrer">
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
-                    whileHover={{ scale: [1, 0.9] }}
+                    whileHover={{ scale: [1, 1.1] }}
                     transition={{ duration: 0.25 }}
                     className="app__flex"
                   >
@@ -95,7 +108,7 @@ const Component = () => {
                 <a href={work.codeLink} target="_blank" rel="noreferrer">
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
-                    whileHover={{ scale: [1, 0.9] }}
+                    whileHover={{ scale: [1, 1.1] }}
                     transition={{ duration: 0.25 }}
                     className="app__flex"
                   >
@@ -122,4 +135,9 @@ const Component = () => {
   );
 };
 
-export const Work = AppWrap(Component, styles, "work");
+export const Work = AppWrap(
+  MotionWrap(Component, styles, "app__works"),
+  styles,
+  "work",
+  "app__primarybg"
+);

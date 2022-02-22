@@ -15,7 +15,7 @@ export const Navbar = () => {
   return (
     <nav className={styles.app__navbar}>
       <div className={styles["app_navbar-logo"]}>
-        <Image src={images.logo} alt="logo" />
+        {/* <Image src={images.logo} alt="logo" /> */}
       </div>
       <ul className={styles["app__navbar-links"]}>
         {navLinks.map((navLink) => (
